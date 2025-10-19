@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Body */
+body {
+  background-color: #0A0F1F;
+  color: #EAF3F9;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #071029;
+  display: flex;
+  justify-content: center; 
+  padding: 10px 40px;
+  z-index: 100;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #EAF3F9;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #6C63FF;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(10, 15, 31, 0.9)),
+    url("https://www.projectlupad.com/wp-content/uploads/2018/12/Iloilo-River-Esplanade-Aerial-View-Project-LUPAD-3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  position: relative;
+}
+
+
+
+.hero-content {
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  margin-top: 25px;
+}
+
+.btn {
+  background: #fff;
+  color: #0b79a3;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #f0f0f0;
+}
+
+/* General Section Styling */
+section {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.section-content {
+  max-width: 900px;
+  text-align: center;
+}
+
+/* Gallery Cards */
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: #11172C;
+  border-radius: 10px;
+  padding: 15px;
+  width: 260px;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Tour Rates Table */
+.rates-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 25px auto;
+  border-collapse: collapse;
+  text-align: left;
+  background: #11172C;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rates-table th, 
+.rates-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #2c3355;
+}
+
+.rates-table th {
+  background-color: #0b79a3;
+  color: white;
+  font-weight: bold;
+}
+
+.rates-table tr:last-child td {
+  border-bottom: none;
+}
+
+.rates-table td {
+  color: #EAF3F9;
+}
+
+.rates-table tr:hover {
+  background-color: #1b223a;
+}
+
+/* Reviews */
+.reviews-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.review-card {
+  background: #11172C;
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+.review-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+/* About Section */
+.about-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.about-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6c63ff;
+}
+
+
+.about-text {
+  max-width: 550px;
+}
+
+/* Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #071029;
+  color: #EAF3F9;
+  font-size: 0.9rem;
+}
