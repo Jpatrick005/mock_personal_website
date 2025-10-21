@@ -1,3 +1,4 @@
+/* ===== RESET & BASE ===== */
 * {
   margin: 0;
   padding: 0;
@@ -6,52 +7,126 @@
   font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-/* Body */
 body {
   background-color: #0A0F1F;
   color: #EAF3F9;
 }
 
-/* Navbar */
+/* ===== NAVBAR ===== */
 nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #071029;
-  display: flex;
-  justify-content: center; 
   padding: 10px 40px;
   z-index: 100;
 }
 
-nav ul {
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.logo {
+  color: #EAF3F9;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Navbar Links (Desktop) */
+#nav-links {
   list-style: none;
   display: flex;
   gap: 20px;
 }
 
-nav ul li a {
+#nav-links li a {
   text-decoration: none;
   color: #EAF3F9;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+#nav-links li a:hover,
+#nav-links li a.active {
   color: #6C63FF;
+  font-weight: 600;
 }
 
-/* Hero Section */
+/* ===== HAMBURGER MENU ===== */
+#hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 200;
+}
+
+#hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #EAF3F9;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Animate to "X" when active */
+#hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+#hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+#hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== MOBILE NAV (SLIDE FROM RIGHT) ===== */
+@media (max-width: 768px) {
+  #hamburger {
+    display: flex;
+  }
+
+  #nav-links {
+    position: fixed;
+    top: 0;
+    right: -250px; /* hidden offscreen */
+    width: 220px;
+    height: 100vh;
+    background: #071029;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 25px;
+    gap: 25px;
+    transition: right 0.4s ease;
+    z-index: 150;
+  }
+
+  #nav-links.show {
+    right: 0; /* slide in */
+  }
+
+  #nav-links li a {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== HERO SECTION ===== */
 .hero {
   height: 100vh;
-  background-image: 
+  background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(10, 15, 31, 0.9)),
-    url("https://www.projectlupad.com/wp-content/uploads/2018/12/Iloilo-River-Esplanade-Aerial-View-Project-LUPAD-3.jpg");
+    url("images/bg.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,10 +134,7 @@ nav ul li a:hover {
   text-align: center;
   color: #fff;
   padding: 20px;
-  position: relative;
 }
-
-
 
 .hero-content {
   max-width: 600px;
@@ -81,15 +153,16 @@ nav ul li a:hover {
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  transition: background 0.3s ease;
 }
 
 .btn:hover {
   background: #f0f0f0;
 }
 
-/* General Section Styling */
+/* ===== SECTIONS ===== */
 section {
-  padding: 80px 20px;
+  padding: 120px 20px;
   display: flex;
   justify-content: center;
 }
@@ -99,7 +172,46 @@ section {
   text-align: center;
 }
 
-/* Gallery Cards */
+/* Section Backgrounds */
+#about {
+  background: linear-gradient(205deg, #5885ff, #16234F);
+}
+
+#services {
+  background: linear-gradient(135deg, #081C29, #0F3A53);
+}
+
+#reviews {
+  background: linear-gradient(205deg, #5885ff, #16234F);
+}
+
+#contact {
+  background: linear-gradient(135deg, #071029, #0B2238);
+}
+
+/* ===== ABOUT ===== */
+.about-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.about-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6c63ff;
+}
+
+.about-text {
+  max-width: 550px;
+}
+
+/* ===== SERVICES ===== */
 .gallery-grid {
   display: flex;
   flex-wrap: wrap;
@@ -109,10 +221,18 @@ section {
 }
 
 .card {
+  position: relative;
   background: #11172C;
   border-radius: 10px;
   padding: 15px;
   width: 260px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card img {
@@ -123,43 +243,34 @@ section {
   margin-bottom: 10px;
 }
 
-/* Tour Rates Table */
-.rates-table {
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 800px;
-  margin: 25px auto;
-  border-collapse: collapse;
-  text-align: left;
-  background: #11172C;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.rates-table th, 
-.rates-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #2c3355;
-}
-
-.rates-table th {
-  background-color: #0b79a3;
+  height: 100%;
+  background: rgba(11, 121, 163, 0.9);
   color: white;
-  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px;
 }
 
-.rates-table tr:last-child td {
-  border-bottom: none;
+.card:hover .card-overlay {
+  opacity: 1;
 }
 
-.rates-table td {
-  color: #EAF3F9;
+.card:hover .card-text {
+  opacity: 0.2;
 }
 
-.rates-table tr:hover {
-  background-color: #1b223a;
-}
-
-/* Reviews */
+/* ===== REVIEWS ===== */
 .reviews-grid {
   display: flex;
   flex-wrap: wrap;
@@ -183,30 +294,7 @@ section {
   margin: 0 auto 10px;
 }
 
-/* About Section */
-.about-me {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  text-align: left;
-}
-
-.about-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #6c63ff;
-}
-
-
-.about-text {
-  max-width: 550px;
-}
-
-/* Contact Form */
+/* ===== CONTACT FORM ===== */
 form {
   display: flex;
   flex-direction: column;
@@ -222,7 +310,7 @@ form textarea {
   font-size: 1rem;
 }
 
-/* Footer */
+/* ===== FOOTER ===== */
 footer {
   text-align: center;
   padding: 20px;
